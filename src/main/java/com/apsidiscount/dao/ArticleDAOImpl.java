@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 @Repository
 public class ArticleDAOImpl implements ArticleDAO {
@@ -53,7 +52,6 @@ public class ArticleDAOImpl implements ArticleDAO {
 	}
 	
 	@Override
-	@Transactional
 	public Article create(Article a) {
 		this.em.persist(a);
 		return a;

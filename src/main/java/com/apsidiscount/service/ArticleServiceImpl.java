@@ -1,5 +1,7 @@
 package com.apsidiscount.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +41,17 @@ public class ArticleServiceImpl implements ArticleService {
 		article.setDescription(description);
 		return article;
 	}
-
+	
+	@Override
+	@Transactional
+	public Article create(Article a) {
+		Article article = articleDAO.create(a);
+		return article;
+	}
+	
+	@Override
+	public List<Article> getArticles() {
+		List<Article> articles = articleDAO.getArticles();
+		return articles;
+	}
 }

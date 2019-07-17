@@ -7,7 +7,7 @@
 target
 
 # autres
-apsidiscount.properties
+/apsidiscount.properties
 
 # fichiers Itellij IDEA a ignorer
 .idea
