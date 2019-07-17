@@ -1,0 +1,14 @@
+# fichiers Eclipse a ignorer
+.settings
+.classpath
+.project
+
+# fichiers maven a ignorer
+target
+
+# autres
+apsidiscount.properties
+
+# fichiers Itellij IDEA a ignorer
+.idea
+*.iml
