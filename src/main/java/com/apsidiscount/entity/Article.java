@@ -55,8 +55,9 @@ public class Article {
 	public Article() {
 	}
 
-	public Article(String designation, BigDecimal prix, long stock, String image) {
+	public Article(long id, String designation, BigDecimal prix, long stock, String image) {
 		super();
+		this.id = id;
 		this.designation = designation;
 		this.image = image;
 		this.prix = prix;
