@@ -14,4 +14,8 @@ public interface ArticleService {
 	Article create(Article a);
 	
 	List<Article> getArticles();
+	
+	void delete(long id);
+	
+	List<Article> getArticlesWithSort();
 }

@@ -56,4 +56,18 @@ public class ArticleDAOImpl implements ArticleDAO {
 		this.em.persist(a);
 		return a;
 	}
+	
+	
+	@Override
+	public void delete(long id) {
+		this.em.createQuery("delete from Article a where a.id = :id")
+			.setParameter("id", id)
+				.executeUpdate();
+	}
+
+	@Override
+	public List<Article> getArticlesWithSort() {
+		return this.em.createQuery("select new Article(a.designation, a.prix, a.stock, a.image) from Article a", Article.class)
+				.getResultList();
+	}
 }

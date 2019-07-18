@@ -18,4 +18,8 @@ public interface ArticleDAO {
 	List<Article> getArticles();
 
 	Article create(Article a);
+	
+	void delete(long id);
+	
+	List<Article> getArticlesWithSort();
 }

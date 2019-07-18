@@ -54,4 +54,17 @@ public class ArticleServiceImpl implements ArticleService {
 		List<Article> articles = articleDAO.getArticles();
 		return articles;
 	}
+	
+	@Override
+	@Transactional
+	public void delete(long id) {
+		articleDAO.delete(id);
+	}
+
+
+
+	@Override
+	public List<Article> getArticlesWithSort() {
+		return articleDAO.getArticlesWithSort();
+	}
 }
