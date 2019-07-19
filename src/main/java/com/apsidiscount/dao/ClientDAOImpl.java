@@ -3,9 +3,12 @@ package com.apsidiscount.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import com.apsidiscount.entity.Client;
+import com.apsidiscount.exceptions.LoginAndPasswordException;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -77,5 +80,17 @@ public class ClientDAOImpl implements ClientDAO {
 				+ "where c.id = :id", Client.class)
 				.setParameter("id", id)
 				.getSingleResult();
+	}
+
+	@Override
+	public Client getClientByNameAndPassword(String email, String password) throws LoginAndPasswordException {
+		try {
+		return this.em.createQuery("select c from Client c where c.email = :email and c.motDePasse = :password", Client.class)
+				.setParameter("email", email)
+					.setParameter("password", password)
+						.getSingleResult();
+		} catch(NoResultException e) {
+			throw new LoginAndPasswordException();
+		}
 	}
 }

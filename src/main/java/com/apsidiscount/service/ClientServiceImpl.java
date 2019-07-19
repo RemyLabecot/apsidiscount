@@ -9,6 +9,7 @@ import com.apsidiscount.entity.Panier;
 import com.apsidiscount.exceptions.ApsiDiscountException;
 import com.apsidiscount.exceptions.ArticleInconnuException;
 import com.apsidiscount.exceptions.ClientInconnuException;
+import com.apsidiscount.exceptions.LoginAndPasswordException;
 import com.apsidiscount.exceptions.StockInsuffisantException;
 import org.springframework.stereotype.Service;
 
@@ -52,5 +53,9 @@ public class ClientServiceImpl implements ClientService {
                 client.getPanier().addArticle(article);
             }
         }
+    }
+    
+    public Client getClientByNameAndPassword(String email, String password) throws LoginAndPasswordException{
+    	return clientDAO.getClientByNameAndPassword(email, password);
     }
 }

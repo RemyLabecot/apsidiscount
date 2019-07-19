@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "CLIENT")
 @SequenceGenerator(name = "client_seq", allocationSize = 1)
@@ -44,6 +46,7 @@ public class Client {
 	@Column(name = "EMAIL")
 	private String email;
 
+	@JsonIgnore
 	@Column(name = "MDP")
 	private String motDePasse;
 

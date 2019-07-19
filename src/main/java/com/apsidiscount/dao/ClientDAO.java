@@ -3,6 +3,7 @@ package com.apsidiscount.dao;
 import java.util.List;
 
 import com.apsidiscount.entity.Client;
+import com.apsidiscount.exceptions.LoginAndPasswordException;
 
 
 public interface ClientDAO {
@@ -22,5 +23,7 @@ public interface ClientDAO {
     long getNbClientByCodePostal(String codePostal);
 
     Client getByIdWithPanier(long id);
+    
+    Client getClientByNameAndPassword(String email, String password) throws LoginAndPasswordException;
 
 }
