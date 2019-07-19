@@ -68,7 +68,7 @@ public class ClientDAOTest extends AbstractBaseTest {
 	public void canGetNbClientByCodePostal() throws Exception {
 		ClientDAO clientDAO = new ClientDAOImpl(em);
 		
-		long nb = clientDAO.getNbClientByCodePostal("33000");
+		long nb = clientDAO.getNbClientByCodePostal("34500");
 		
 		assertTrue(nb > 0);
 	}

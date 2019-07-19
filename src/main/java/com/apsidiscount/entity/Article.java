@@ -63,7 +63,15 @@ public class Article {
 		this.prix = prix;
 		this.stock = stock;
 	}
-
+	/* Add Date for request RCP */
+	public Article(long id, String designation, BigDecimal prix, long stock, Date miseEnLigne) {
+		super();
+		this.id = id;
+		this.designation = designation;
+		this.miseEnLigne = miseEnLigne;
+		this.prix = prix;
+		this.stock = stock;
+	}
 	public Long getId() {
 		return id;
 	}

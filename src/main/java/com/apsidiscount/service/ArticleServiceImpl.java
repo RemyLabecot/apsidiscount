@@ -67,4 +67,12 @@ public class ArticleServiceImpl implements ArticleService {
 	public List<Article> getArticlesWithSort() {
 		return articleDAO.getArticlesWithSort();
 	}
+
+
+
+	@Override
+	public List<Article> getArticlesWithSortRCP() {
+		
+		return articleDAO.getArticlesWithSortRCP();
+	}
 }

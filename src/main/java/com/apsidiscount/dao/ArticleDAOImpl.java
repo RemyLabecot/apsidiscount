@@ -70,4 +70,10 @@ public class ArticleDAOImpl implements ArticleDAO {
 		return this.em.createQuery("select new Article(a.id, a.designation, a.prix, a.stock, a.image) from Article a", Article.class)
 				.getResultList();
 	}
+	@Override
+	
+	public List<Article> getArticlesWithSortRCP() {
+		return this.em.createQuery("select new Article(a.id, a.designation, a.prix, a.stock, a.miseEnLigne) from Article a", Article.class)
+				.getResultList();
+	}
 }

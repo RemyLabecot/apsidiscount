@@ -22,4 +22,6 @@ public interface ArticleDAO {
 	void delete(long id);
 	
 	List<Article> getArticlesWithSort();
+
+	List<Article> getArticlesWithSortRCP();
 }
