@@ -54,6 +54,7 @@ public class Client {
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 
+	@JsonIgnore
 	@OneToOne
 	private Panier panier;
 

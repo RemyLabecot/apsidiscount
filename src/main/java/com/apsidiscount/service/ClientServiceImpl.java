@@ -13,49 +13,58 @@ import com.apsidiscount.exceptions.LoginAndPasswordException;
 import com.apsidiscount.exceptions.StockInsuffisantException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 
 @Service
 public class ClientServiceImpl implements ClientService {
 
-    private ClientDAO clientDAO;
-    private ArticleDAO articleDAO;
-    private PanierDAO panierDAO;
+	private ClientDAO clientDAO;
+	private ArticleDAO articleDAO;
+	private PanierDAO panierDAO;
 
-    public ClientServiceImpl(ClientDAO clientDAO, ArticleDAO articleDAO, PanierDAO panierDAO) {
-        this.clientDAO = clientDAO;
-        this.articleDAO = articleDAO;
-        this.panierDAO = panierDAO;
-    }
+	public ClientServiceImpl(ClientDAO clientDAO, ArticleDAO articleDAO, PanierDAO panierDAO) {
+		this.clientDAO = clientDAO;
+		this.articleDAO = articleDAO;
+		this.panierDAO = panierDAO;
+	}
 
-    @Override
-    @Transactional(rollbackOn = ApsiDiscountException.class)
-    public void ajouterArticlesDansPanier(long idClient, long... idArticles) throws ClientInconnuException, ArticleInconnuException, StockInsuffisantException {
+	@Override
+	@Transactional(rollbackOn = ApsiDiscountException.class)
+	public Article ajouterArticleDansPanier(long idClient, long idArticle) throws ClientInconnuException, ArticleInconnuException, StockInsuffisantException {
 
-        Client client = clientDAO.getById(idClient);
-        if (client == null) {
-            throw new ClientInconnuException(idClient);
-        }
+		Client client = clientDAO.getById(idClient);
+		if (client == null) {
+			throw new ClientInconnuException(idClient);
+		}
 
-        if (!client.hasPanier()) {
-            Panier panier = new Panier();
-            panierDAO.create(panier);
-            client.setPanier(panier);
-        }
+		if (!client.hasPanier()) {
+			Panier panier = new Panier();
+			panierDAO.create(panier);
+			client.setPanier(panier);
+		}
 
-        for (long idArticle : idArticles) {
-            Article article = articleDAO.getById(idArticle);
-            if (article == null) {
-                throw new ArticleInconnuException(idArticle);
-            }
-            if(! client.getPanier().contient(article)) {
-                client.getPanier().addArticle(article);
-            }
-        }
-    }
-    
-    public Client getClientByNameAndPassword(String email, String password) throws LoginAndPasswordException{
-    	return clientDAO.getClientByNameAndPassword(email, password);
-    }
+
+		Article article = articleDAO.getById(idArticle);
+		if (article == null) {
+			throw new ArticleInconnuException(idArticle);
+		}
+		if(!client.getPanier().contient(article)) {
+			client.getPanier().addArticle(article);
+		}
+		
+		return article;
+	}
+
+	public Client getClientByNameAndPassword(String email, String password) throws LoginAndPasswordException{
+		return clientDAO.getClientByNameAndPassword(email, password);
+	}
+
+	@Override
+	public List<Article> getArticlesByIdClient(long id) {
+		List<Article> articles = clientDAO.getByIdWithPanier(id).getPanier().getArticles();
+		return articles;
+	}
 }

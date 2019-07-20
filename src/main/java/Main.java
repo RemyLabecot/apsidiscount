@@ -12,7 +12,7 @@ public class Main {
 
             ClientService clientService = appCtx.getBean(ClientService.class);
 
-            clientService.ajouterArticlesDansPanier(128, 1);
+            clientService.ajouterArticleDansPanier(128, 1);
         } catch (ApsiDiscountException e) {
             e.printStackTrace();
         }

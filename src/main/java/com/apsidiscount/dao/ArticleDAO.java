@@ -24,4 +24,5 @@ public interface ArticleDAO {
 	List<Article> getArticlesWithSort();
 
 	List<Article> getArticlesWithSortRCP();
+	
 }
