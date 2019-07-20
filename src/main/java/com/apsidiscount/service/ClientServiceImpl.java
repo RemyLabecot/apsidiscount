@@ -67,4 +67,22 @@ public class ClientServiceImpl implements ClientService {
 		List<Article> articles = clientDAO.getByIdWithPanier(id).getPanier().getArticles();
 		return articles;
 	}
+	
+	@Override
+	@Transactional
+	public void deleteArticleFromPanier(long idClient, long idArticle) throws ClientInconnuException, ArticleInconnuException {
+		Client client = clientDAO.getById(idClient);
+		if (client == null) {
+			throw new ClientInconnuException(idClient);
+		}
+		
+		Article article = articleDAO.getById(idArticle);
+		if (article == null) {
+			throw new ArticleInconnuException(idArticle);
+		}
+		
+		if(client.getPanier().contient(article)) {
+			client.getPanier().deleteArticle(article);
+		}
+	}
 }

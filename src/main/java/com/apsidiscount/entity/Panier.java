@@ -1,5 +1,6 @@
 package com.apsidiscount.entity;
 
+import com.apsidiscount.exceptions.ArticleInconnuException;
 import com.apsidiscount.exceptions.StockInsuffisantException;
 
 import java.util.ArrayList;
@@ -51,6 +52,10 @@ public class Panier {
 			throw new StockInsuffisantException(article);
 		}
 		this.articles.add(article);
+	}
+	
+	public void deleteArticle(Article article) throws ArticleInconnuException {
+		this.articles.remove(article);
 	}
 
 	public boolean contient(Article articleAVerifier) {

@@ -17,4 +17,6 @@ public interface ClientService {
     Client getClientByNameAndPassword(String email, String password) throws LoginAndPasswordException;
     
     List<Article> getArticlesByIdClient(long id);
+    
+    void deleteArticleFromPanier(long idClient, long idArticle) throws ClientInconnuException, ArticleInconnuException;
 }
