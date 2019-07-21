@@ -20,4 +20,6 @@ public interface ArticleService {
 	List<Article> getArticlesWithSort();
 	
 	List<Article> getArticlesWithSortRCP();
+	
+	List<Article> getArticlesByCategorie(String nomCategorie);
 }

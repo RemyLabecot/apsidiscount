@@ -75,4 +75,11 @@ public class ArticleServiceImpl implements ArticleService {
 		
 		return articleDAO.getArticlesWithSortRCP();
 	}
+
+
+
+	@Override
+	public List<Article> getArticlesByCategorie(String nomCategorie) {
+		return this.articleDAO.getByCategorie(nomCategorie);
+	}
 }
