@@ -11,7 +11,7 @@ public interface ArticleDAO {
 
 	Article getById(long id);
 
-	List<Article> getByCategorie(String nomCategorie);
+	List<Article> getByCategorie(long idCategorie);
 
 	List<Article> getByCategorie(Categorie categorie);
 

@@ -79,7 +79,7 @@ public class ArticleServiceImpl implements ArticleService {
 
 
 	@Override
-	public List<Article> getArticlesByCategorie(String nomCategorie) {
-		return this.articleDAO.getByCategorie(nomCategorie);
+	public List<Article> getArticlesByCategorie(long idCategorie) {
+		return this.articleDAO.getByCategorie(idCategorie);
 	}
 }

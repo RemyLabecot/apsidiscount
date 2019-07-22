@@ -32,9 +32,9 @@ public class ArticleDAOImpl implements ArticleDAO {
 	}
 
 	@Override
-	public List<Article> getByCategorie(String nomCategorie) {
-		return this.em.createQuery("select a from Article a where a.categorie.nom = :nomCategorie", Article.class)
-				      .setParameter("nomCategorie", nomCategorie)
+	public List<Article> getByCategorie(long idCategorie) {
+		return this.em.createQuery("select a from Article a where a.categorie.id = :idCategorie", Article.class)
+				      .setParameter("idCategorie", idCategorie)
 				      .getResultList();
 	}
 
